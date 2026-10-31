@@ -26,7 +26,7 @@ jobs:
       - name: Build
         run: ./gradlew build
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: Timber
           path: build/libs/*.jar
