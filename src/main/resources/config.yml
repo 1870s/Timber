@@ -1,0 +1,30 @@
+# Timber – Konfiguration
+# Nach Änderungen: /timber reload
+
+# Nur beim Schleichen (Shift) den ganzen Baum fällen.
+# Auf false = jeder abgebaute Stamm fällt sofort den ganzen Baum.
+require-sneak: true
+
+# Nur auslösen, wenn eine Axt in der Haupthand ist.
+require-axe: true
+
+# Die Blätter des Baums ebenfalls sofort abbauen (Setzlinge, Stöcke, Äpfel droppen).
+break-leaves: true
+
+# Nur auslösen, wenn natürliche (nicht vom Spieler platzierte) Blätter am Holz hängen.
+# Schützt Holzhäuser und Bauten aus Stämmen davor, komplett abgerissen zu werden.
+require-natural-leaves: true
+
+# Hört auf, bevor die Axt kaputtgeht (1 Haltbarkeit bleibt übrig).
+protect-tool: true
+
+# Obergrenzen pro Baum (Schutz vor Lag bei riesigen Bäumen).
+max-logs: 256
+max-leaves: 1024
+
+# Wie weit (in Blöcken) Blätter vom Holz entfernt sein dürfen.
+# Vanilla-Blätter werden höchstens 6 Blöcke weit von einem Stamm gehalten.
+leaf-radius: 6
+
+# Welten, in denen Timber deaktiviert ist, z. B. [world_nether, spawn]
+disabled-worlds: []

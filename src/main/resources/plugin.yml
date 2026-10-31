@@ -1,0 +1,15 @@
+name: Timber
+version: '${version}'
+main: de.timber.TimberPlugin
+api-version: '26.1'
+description: Fällt beim Schleichen den ganzen Baum samt Blättern auf einmal.
+author: 1870s
+website: https://github.com/1870s/Timber
+
+permissions:
+  timber.use:
+    description: Erlaubt das Fällen ganzer Bäume
+    default: true
+  timber.reload:
+    description: Erlaubt /timber reload
+    default: op
