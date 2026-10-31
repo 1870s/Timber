@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Findet alle zusammenhängenden Stämme und die dazugehörigen Blätter eines Baums.
+ * Finds all connected logs of a tree and the leaves that belong to it.
  */
 final class TreeScanner {
 
@@ -31,7 +31,7 @@ final class TreeScanner {
         return Tag.LOGS.isTagged(type);
     }
 
-    /** Natürliche Blätter, plus Warzenblöcke/Schroomlichter der Nether-Pilze. */
+    /** Natural leaves, plus the wart blocks and shroomlights of Nether fungi. */
     static boolean isNaturalLeaf(Block block) {
         Material type = block.getType();
         if (Tag.LEAVES.isTagged(type)) {
@@ -41,7 +41,7 @@ final class TreeScanner {
     }
 
     /**
-     * @return der Baum, oder {@code null}, wenn es laut Einstellungen kein echter Baum ist
+     * @return the tree, or {@code null} if it doesn't count as a real tree according to the settings
      */
     static Tree scan(Block origin, TimberSettings settings) {
         List<Block> logs = findLogs(origin, settings.maxLogs());
@@ -54,8 +54,8 @@ final class TreeScanner {
     }
 
     /**
-     * Breitensuche über alle 26 Nachbarn (für schräge Äste, z. B. Akazie), aber nur
-     * gleiche Holzart und nicht unterhalb des abgebauten Blocks.
+     * Breadth-first search over all 26 neighbours (for diagonal branches, e.g. acacia),
+     * but only the same wood type and never below the broken block.
      */
     private static List<Block> findLogs(Block origin, int maxLogs) {
         Material logType = origin.getType();
@@ -87,7 +87,7 @@ final class TreeScanner {
         return logs;
     }
 
-    /** Breitensuche von allen Stämmen aus durch zusammenhängende natürliche Blätter. */
+    /** Breadth-first search from all logs through connected natural leaves. */
     private static List<Block> findLeaves(List<Block> logs, TimberSettings settings) {
         List<Block> leaves = new ArrayList<>();
         Map<Block, Integer> distance = new HashMap<>();

@@ -1,5 +1,5 @@
 plugins {
-    // Lädt bei Bedarf automatisch ein passendes JDK (Java 25) herunter
+    // Automatically downloads a matching JDK (Java 25) if needed
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 

@@ -1,30 +1,30 @@
-# Timber – Konfiguration
-# Nach Änderungen: /timber reload
+# Timber – configuration
+# After making changes, run: /timber reload
 
-# Nur beim Schleichen (Shift) den ganzen Baum fällen.
-# Auf false = jeder abgebaute Stamm fällt sofort den ganzen Baum.
+# Only fell the whole tree while sneaking (Shift).
+# Set to false = every log you break fells the whole tree.
 require-sneak: true
 
-# Nur auslösen, wenn eine Axt in der Haupthand ist.
+# Only trigger with an axe in the main hand.
 require-axe: true
 
-# Die Blätter des Baums ebenfalls sofort abbauen (Setzlinge, Stöcke, Äpfel droppen).
+# Also break the tree's leaves right away (saplings, sticks and apples drop as usual).
 break-leaves: true
 
-# Nur auslösen, wenn natürliche (nicht vom Spieler platzierte) Blätter am Holz hängen.
-# Schützt Holzhäuser und Bauten aus Stämmen davor, komplett abgerissen zu werden.
+# Only trigger if natural (not player-placed) leaves are attached to the logs.
+# Protects log cabins and other log builds from being torn down completely.
 require-natural-leaves: true
 
-# Hört auf, bevor die Axt kaputtgeht (1 Haltbarkeit bleibt übrig).
+# Stop before the axe breaks (1 durability is left).
 protect-tool: true
 
-# Obergrenzen pro Baum (Schutz vor Lag bei riesigen Bäumen).
+# Limits per tree (prevents lag on huge trees).
 max-logs: 256
 max-leaves: 1024
 
-# Wie weit (in Blöcken) Blätter vom Holz entfernt sein dürfen.
-# Vanilla-Blätter werden höchstens 6 Blöcke weit von einem Stamm gehalten.
+# How far (in blocks) leaves may be from a log.
+# Vanilla leaves are kept alive by a log at most 6 blocks away.
 leaf-radius: 6
 
-# Welten, in denen Timber deaktiviert ist, z. B. [world_nether, spawn]
+# Worlds where Timber is disabled, e.g. [world_nether, spawn]
 disabled-worlds: []

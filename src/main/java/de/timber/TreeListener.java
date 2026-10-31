@@ -22,14 +22,14 @@ final class TreeListener implements Listener {
 
     private final TimberPlugin plugin;
 
-    /** Spieler, deren Baum gerade gefällt wird – verhindert, dass unsere eigenen Abbau-Events erneut auslösen. */
+    /** Players whose tree is currently being felled – keeps our own break events from triggering again. */
     private final Set<UUID> chopping = new HashSet<>();
 
     TreeListener(TimberPlugin plugin) {
         this.plugin = plugin;
     }
 
-    // MONITOR + ignoreCancelled: nur reagieren, wenn der Abbau wirklich durchgeht (z. B. nicht von WorldGuard blockiert)
+    // MONITOR + ignoreCancelled: only react if the break actually goes through (e.g. not blocked by WorldGuard)
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
@@ -46,7 +46,7 @@ final class TreeListener implements Listener {
         TreeScanner.Tree tree = TreeScanner.scan(origin, settings);
         if (tree == null) return;
 
-        // Einen Tick später fällen, damit der ursprüngliche Abbau komplett abgeschlossen ist
+        // Fell the tree one tick later so the original break has fully completed
         Material logType = origin.getType();
         plugin.getServer().getScheduler().runTask(plugin, () -> chop(player, logType, tree, settings));
     }
@@ -57,18 +57,18 @@ final class TreeListener implements Listener {
         chopping.add(player.getUniqueId());
         try {
             for (Block log : tree.logs()) {
-                // Ursprünglicher Block ist schon weg; andere können sich inzwischen geändert haben
+                // The original block is already gone; others may have changed in the meantime
                 if (log.getType() != logType) continue;
 
                 ItemStack tool = player.getInventory().getItemInMainHand();
                 if (settings.requireAxe() && !isAxe(tool)) return;
                 if (settings.protectTool() && isAboutToBreak(tool)) {
                     player.sendActionBar(Component.text(
-                            "Deine Axt ist fast kaputt – Timber hat angehalten.", NamedTextColor.RED));
+                            "Your axe is about to break – Timber stopped.", NamedTextColor.RED));
                     return;
                 }
 
-                // Wie ein normaler Abbau: Drops, Verzauberungen, Haltbarkeit, Statistiken, Schutz-Plugins
+                // Just like a normal break: drops, enchantments, durability, statistics, protection plugins
                 player.breakBlock(log);
             }
 
@@ -82,7 +82,7 @@ final class TreeListener implements Listener {
         }
     }
 
-    /** Blätter droppen normal, kosten aber keine Haltbarkeit der Axt. */
+    /** Leaves drop as usual but don't cost any axe durability. */
     private void breakLeaf(Player player, Block leaf) {
         if (!TreeScanner.isNaturalLeaf(leaf)) return;
 

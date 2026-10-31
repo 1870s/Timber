@@ -27,11 +27,11 @@ public final class TimberPlugin extends JavaPlugin {
                                             reloadConfig();
                                             settings = TimberSettings.from(getConfig());
                                             ctx.getSource().getSender()
-                                                    .sendRichMessage("<green>Timber-Konfiguration neu geladen.");
+                                                    .sendRichMessage("<green>Timber configuration reloaded.");
                                             return Command.SINGLE_SUCCESS;
                                         }))
                                 .build(),
-                        "Timber verwalten",
+                        "Manage Timber",
                         List.of()));
     }
 
