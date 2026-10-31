@@ -8,7 +8,7 @@ A lightweight, vanilla-friendly tree feller for Paper servers.
 
 [![Build](https://github.com/1870s/Timber/actions/workflows/build.yml/badge.svg)](https://github.com/1870s/Timber/actions/workflows/build.yml)
 [![Latest release](https://img.shields.io/github/v/release/1870s/Timber?label=release)](https://github.com/1870s/Timber/releases/latest)
-[![Paper](https://img.shields.io/badge/Paper-26.1.2-2b7bb9)](https://papermc.io/)
+[![Paper](https://img.shields.io/badge/Paper-26.1--26.3-2b7bb9)](https://papermc.io/)
 [![Java](https://img.shields.io/badge/Java-25-e76f00)](https://adoptium.net/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-3da639)](LICENSE)
 
@@ -33,7 +33,19 @@ A lightweight, vanilla-friendly tree feller for Paper servers.
 2. Drop it into your server's `plugins/` folder.
 3. Restart the server.
 
-**Requirements:** [Paper](https://papermc.io/downloads/paper) 26.1.x · Java 25
+**Requirements:** [Paper](https://papermc.io/downloads/paper) 26.1 or newer · Java 25
+
+### Supported versions
+
+One JAR works on all of these – no separate downloads needed.
+
+| Paper   | Status |
+|---------|:------:|
+| 26.3    | ✅     |
+| 26.2    | ✅     |
+| 26.1.x  | ✅     |
+
+Every build is checked against the latest Paper builds of each version.
 
 ## 🎮 Usage
 
@@ -73,6 +85,12 @@ cd Timber
 ```
 
 The plugin JAR ends up in `build/libs/`. Gradle needs Java 17+ to run; if no JDK 25 is installed, it is downloaded automatically via Gradle toolchains.
+
+Timber compiles against the oldest supported Paper API (set in `gradle.properties`) so the JAR runs on every newer version. To check against a newer API, pass it on the command line:
+
+```bash
+./gradlew compileJava -PpaperApi=26.3.build.+
+```
 
 ## 📄 License
 

@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "de.timber"
-version = "1.0.0"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -11,11 +11,11 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:26.1.2.build.74-stable")
+    compileOnly("io.papermc.paper:paper-api:${providers.gradleProperty("paperApi").get()}")
 }
 
 java {
-    // Paper 26.1.x läuft auf Java 25
+    // Paper 26.1 and newer run on Java 25
     toolchain.languageVersion = JavaLanguageVersion.of(25)
 }
 
